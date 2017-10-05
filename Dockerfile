@@ -1,5 +1,5 @@
-# Heavy weight Dockerfile
-# Built from many Docker image layers
+# Light weight Dockerfile
+# Using .dockerignore to ignore certain file and directory patterns from the build context
 # Files size: 252MB (At time of creating talk)
 
 FROM debian:stretch
