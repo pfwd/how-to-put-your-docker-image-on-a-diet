@@ -1,6 +1,6 @@
 # Light weight Dockerfile
-# Using a smaller base image
-# Files size: 262MB (At time of creating talk)
+# Using .dockerignore to ignore certain file and directory patterns from the build context
+# Files size: 252MB (At time of creating talk)
 
 FROM debian:stretch
 

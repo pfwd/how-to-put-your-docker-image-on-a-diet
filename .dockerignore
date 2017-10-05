@@ -1,0 +1,11 @@
+.*
+/tmp/*
+/log
+**/*.md
+**/vendor/**/Tests
+site/build
+site/var/cache
+site/var/logs
+site/var/sessions
+site/web/app_dev.php
+site/bin/symfony_requirements
