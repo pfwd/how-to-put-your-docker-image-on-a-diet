@@ -1,6 +1,6 @@
-# Even lighter Dockerfile
-# Built from many Docker image layers
-# Files size: 314MB (At time of creating talk)
+# Much lighter Dockerfile
+# Cleaning up after install
+# Files size: 275MB (At time of creating talk)
 
 FROM ubuntu:latest
 
@@ -15,7 +15,11 @@ RUN apt-get update -y \
             libapache2-mod-php \
             php7.0 php7.0-cli php7.0-xml \
     && \
-        a2enmod rewrite
+        a2enmod rewrite \
+    && \
+        apt-get autoremove -y --purge \
+    && \
+        rm -rf /var/lib/apt/lists/*
 
 ADD config/sites-available/000-default.conf /etc/apache2/sites-available/000-default.conf
 
