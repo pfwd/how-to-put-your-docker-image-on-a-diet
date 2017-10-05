@@ -1,5 +1,5 @@
 # How To Put Your Docker Image On A Diet
-A talk by [Peter Fisher]('http://peterfisher.me.uk/event/how-to-put-your-docker-image-diet/')
+A talk by [Peter Fisher](http://peterfisher.me.uk/event/how-to-put-your-docker-image-diet/)
 
 The application is a very simple Symfony 3.3.* web app.
 
