@@ -1,8 +1,8 @@
-# Much lighter Dockerfile
-# Cleaning up after install
-# Files size: 275MB (At time of creating talk)
+# Light weight Dockerfile
+# Using a smaller base image
+# Files size: 262MB (At time of creating talk)
 
-FROM ubuntu:latest
+FROM debian:stretch
 
 ARG DEBIAN_FRONTEND=noninteractive
 
