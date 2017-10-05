@@ -1,6 +1,6 @@
 # Heavy weight Dockerfile
 # Built from many Docker image layers
-# Files size: 262MB (At time of creating talk)
+# Files size: 252MB (At time of creating talk)
 
 FROM debian:stretch
 
