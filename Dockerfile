@@ -1,4 +1,4 @@
-# Heavy weight Dockerfile
+# Slightly lighter Dockerfile
 # Built from many Docker image layers
 # Files size: 588MB (At time of creating talk)
 
