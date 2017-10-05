@@ -77,7 +77,7 @@ $ docker pull docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0
 ```
 
 
-Run 0.1.x of the application
+Run 0.2.x of the application
 
 ```
 $ docker run --name apache2 -d -p 80:80 howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
