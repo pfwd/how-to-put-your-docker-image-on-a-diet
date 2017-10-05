@@ -73,11 +73,7 @@ OR
 Pull the image from the Docker hub
 
 ```
-<<<<<<< .merge_file_lrI4qF
-$ docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.1.0
-=======
 $ docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
->>>>>>> .merge_file_9DjJrq
 ```
 
 
