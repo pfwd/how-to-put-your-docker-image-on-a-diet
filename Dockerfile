@@ -1,6 +1,6 @@
 # Heavy weight Dockerfile
 # Built from many Docker image layers
-# Files size: 588MB (At time of creating talk)
+# Files size: 314MB (At time of creating talk)
 
 FROM ubuntu:latest
 
@@ -11,10 +11,9 @@ ENV DOC_ROOT /var/www/mysite
 RUN apt-get update -y \
     && \
         apt-get install -y \
-            git \
             apache2 \
             libapache2-mod-php \
-            php7.0* \
+            php7.0 php7.0-cli php7.0-xml \
     && \
         a2enmod rewrite
 
