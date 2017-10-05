@@ -1,5 +1,5 @@
-# Heavy weight Dockerfile
-# Built from many Docker image layers
+# Much lighter Dockerfile
+# Cleaning up after install
 # Files size: 275MB (At time of creating talk)
 
 FROM ubuntu:latest
