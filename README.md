@@ -14,7 +14,7 @@ The talk was first given at PHP South West
 
 This is tag **0.5.0**
 
-Docker image file size: **314MB**
+Docker image file size: **262MB**
 
 ---
 
