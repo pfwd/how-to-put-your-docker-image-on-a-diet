@@ -12,9 +12,9 @@ The talk was first given at PHP South West
 
 ---
 
-This is tag **0.1.0**
+This is tag **0.2.0**
 
-Docker image file size: **593MB**
+Docker image file size: **588MB**
 
 ---
 
@@ -62,10 +62,10 @@ $ docker-machine env how-to-put-your-docker-image-on-a-diet
 $ eval $(docker-machine env how-to-put-your-docker-image-on-a-diet)
 ```
 
-Build 0.1.x of the application
+Build 0.2.x of the application
 
 ```
-$ docker build -t howtocodewell/how-to-put-your-docker-image-on-a-diet:0.1.0 .
+$ docker build -t howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0 .
 ```
 
 OR
@@ -73,14 +73,14 @@ OR
 Pull the image from the Docker hub
 
 ```
-$ docker pull docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.1.0
+$ docker pull docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
 ```
 
 
 Run 0.1.x of the application
 
 ```
-$ docker run --name apache2 -d -p 80:80 howtocodewell/how-to-put-your-docker-image-on-a-diet:0.1.0
+$ docker run --name apache2 -d -p 80:80 howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
 ```
 
 Check the IP address of the Docker machine
@@ -110,5 +110,5 @@ $ docker rm -f apache2
 Or remove the image
 
 ```
-$ docker rmi -f howtocodewell/how-to-put-your-docker-image-on-a-diet:0.1.0
+$ docker rmi -f howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
 ```
