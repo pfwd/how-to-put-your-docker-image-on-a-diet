@@ -73,7 +73,7 @@ OR
 Pull the image from the Docker hub
 
 ```
-$ docker pull docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
+$ docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.2.0
 ```
 
 
