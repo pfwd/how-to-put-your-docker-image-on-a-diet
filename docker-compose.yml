@@ -1,0 +1,127 @@
+version: '3.7'
+
+services:
+  site_1.0.0:
+    build:
+      dockerfile: Dockerfile.1.0.0
+      context: .
+    container_name: site_1.0.0
+    restart: always
+    ports:
+      - 8100:80
+
+  site_1.1.0:
+    build:
+      dockerfile: Dockerfile.1.1.0
+      context: .
+    container_name: site_1.1.0
+    restart: always
+    ports:
+      - 8110:80
+
+  site_1.2.0:
+    build:
+      dockerfile: Dockerfile.1.2.0
+      context: .
+    container_name: site_1.2.0
+    restart: always
+    ports:
+      - 8120:80
+
+  site_1.3.0:
+    build:
+      dockerfile: Dockerfile.1.3.0
+      context: .
+    container_name: site_1.3.0
+    restart: always
+    ports:
+      - 8130:80
+
+  site_1.4.0:
+    build:
+      dockerfile: Dockerfile.1.4.0
+      context: .
+    container_name: site_1.4.0
+    restart: always
+    ports:
+      - 8140:80
+
+  site_1.5.0:
+    build:
+      dockerfile: Dockerfile.1.5.0
+      context: .
+    container_name: site_1.5.0
+    restart: always
+    ports:
+      - 8150:80
+
+  site_1.6.0:
+    build:
+      dockerfile: Dockerfile.1.6.0
+      context: .
+    container_name: site_1.6.0
+    restart: always
+    ports:
+      - 8160:80
+
+  site_1.7.0_dev:
+    build:
+      dockerfile: Dockerfile.1.7.0
+      context: .
+      target: development
+    container_name: site_1.7.0-dev
+    restart: always
+    ports:
+      - 8171:80
+
+  site_1.8.0_dev:
+    build:
+      dockerfile: Dockerfile.1.8.0
+      context: .
+      target: development
+    container_name: site_1.8.0-dev
+    restart: always
+    ports:
+      - 8181:80
+
+  site_1.8.0_staging:
+    build:
+      dockerfile: Dockerfile.1.8.0
+      context: .
+      target: staging
+    container_name: site_1.8.0-staging
+    restart: always
+    ports:
+      - 8182:80
+
+  site_1.9.0_apache:
+    build:
+      dockerfile: Dockerfile.1.9.0-apache
+      context: .
+      target: staging
+    container_name: site_1.9.0_apache
+    restart: always
+    ports:
+      - 8190:80
+    depends_on:
+      - php
+    networks:
+      - backend
+    volumes:
+      - site/:/var/www/html/
+
+  php:
+    build:
+      dockerfile: Dockerfile.1.9.0-php
+      context: .
+    restart: always
+    networks:
+      - backend
+    volumes:
+      - site/:/var/www/html/
+
+volumes:
+  site:
+
+networks:
+  backend:

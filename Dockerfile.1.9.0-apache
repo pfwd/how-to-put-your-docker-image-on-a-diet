@@ -1,0 +1,22 @@
+# Tag 1.9.0 Files size: 171MB (At time of creating talk)
+# Separating PHP and Apache into separate containers/images
+FROM httpd:alpine as builder-base
+RUN apk --no-cache update           && \
+    apk --no-cache upgrade
+
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public/
+COPY config/sites-available/php-fpm-default.conf /usr/local/apache2/conf/site.apache.conf
+RUN echo "Include /usr/local/apache2/conf/site.apache.conf" >> /usr/local/apache2/conf/httpd.conf
+RUN sed -i '/LoadModule rewrite_module/s/^#//g' /usr/local/apache2/conf/httpd.conf
+
+FROM composer:1.7 as staging-vendor
+COPY site/composer.json composer.json
+RUN composer install  -o                \
+    --ignore-platform-reqs              \
+    --no-interaction                    \
+    --prefer-dist                       \
+    --no-dev                         && \
+    composer clearcache
+
+FROM builder-base as staging
+COPY --from=staging-vendor /app/ /var/www/html/
