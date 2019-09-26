@@ -26,12 +26,12 @@ The talk was first given at PHP South Wales
 
 ---
 
-- [View Slides](http://peterfisher.me.uk)
-- [Joind.in](http://peterfisher.me.uk)
+- [View Slides](https://speakerdeck.com/pfwd/how-to-put-your-docker-image-on-a-diet)
+- [Portfolio](http://peterfisher.me.uk)
 - [Subscribe to HowToCodeWell YouTube channel](http://bit.ly/2wf9ufB)
 
 
-- [Install](#install)
+- [Install](#Installation)
   -  [Git](#git)
   -  [Docker](#docker)
 - [Uninstall](#uninstall)
