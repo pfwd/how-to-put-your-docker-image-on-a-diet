@@ -1,0 +1,23 @@
+# Tag 1.4.0 Files size:   601MB (At time of creating talk)
+# Changed base to be php:7.4-rc-apache and removed un required packages
+FROM php:7.4-rc-apache
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public/
+
+RUN apt-get update                                      && \
+    apt-get install -y                                     \
+        libzip-dev                                         \
+        git                                                \
+        zip                                                \
+        unzip                                              \
+        curl                                            && \
+        docker-php-ext-install zip                      && \
+        curl -s https://getcomposer.org/installer | php && \
+        mv composer.phar /usr/local/bin/composer        && \
+        a2enmod rewrite
+
+ADD config/sites-available/000-default.conf \
+    /etc/apache2/sites-available/000-default.conf
+
+COPY site/ /var/www/html/
+
+RUN composer install

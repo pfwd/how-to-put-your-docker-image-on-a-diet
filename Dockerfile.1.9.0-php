@@ -1,0 +1,5 @@
+# Tag 1.9.0 Files size: 88.5MB (At time of creating talk)
+# Separating PHP and Apache into separate containers/images
+FROM php:7.4.0RC1-fpm-alpine
+RUN apk --no-cache update       && \
+    apk --no-cache upgrade

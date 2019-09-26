@@ -1,20 +1,28 @@
 # How To Put Your Docker Image On A Diet
 A talk by [Peter Fisher](http://peterfisher.me.uk/event/how-to-put-your-docker-image-diet/)
 
-The application is a very simple Symfony 3.3.* web app.
+The application is a very simple Symfony 4.3.4 web app.
 
 Each tag demonstrates how to reduce the file size of the Docker image which is being built.
 
-The images are also available on the [Docker Hub](https://hub.docker.com/r/howtocodewell/how-to-put-your-docker-image-on-a-diet/)
+The talk was first given at PHP South Wales
 
+## Docker image sizes
 
-The talk was first given at PHP South West
+| Version | Size                        |
+|---------|-----------------------------|
+| 1.0.0   | 1.0.9 GB                    |
+| 1.1.0   | 1.0.6 GB                    |
+| 1.2.0   | 708 MB                      |
+| 1.3.0   | 449 MB                      |
+| 1.4.0   | 601 MB                      |
+| 1.5.0   | 485 MB                      |
+| 1.6.0   | 478 MB                      |
+| 1.7.0   | 444 MB                      |
+| 1.8.0   | 424 MB                      |
+| 1.9.0   | 171 MB  |
 
 ---
-
-This is tag **0.6.0**
-
-Docker image file size: **252MB**
 
 ---
 
@@ -25,7 +33,6 @@ Docker image file size: **252MB**
 
 - [Install](#install)
   -  [Git](#git)
-  -  [Composer](#composer)
   -  [Docker](#docker)
 - [Uninstall](#uninstall)
 
@@ -34,7 +41,8 @@ Docker image file size: **252MB**
 
 You will need:
 - git
-- composer
+- Docker machine
+- Docker compose
 - Docker
 
 ### Git
@@ -43,13 +51,6 @@ Clone the repo
 
 ```
 $ git clone git@github.com:pfwd/how-to-put-your-docker-image-on-a-diet.git
-```
-### Composer
-
-Update the website using composer
-
-```
-$ composer install -n -d site
 ```
 
 ### Docker
@@ -62,53 +63,36 @@ $ docker-machine env how-to-put-your-docker-image-on-a-diet
 $ eval $(docker-machine env how-to-put-your-docker-image-on-a-diet)
 ```
 
-Build 0.6.x of the application
-
+Building the images and containers via Docker compose
 ```
-$ docker build -t howtocodewell/how-to-put-your-docker-image-on-a-diet:0.6.0 .
-```
-
-OR
-
-Pull the image from the Docker hub
-
-```
-$ docker pull howtocodewell/how-to-put-your-docker-image-on-a-diet:0.6.0
+$ docker-compose up -d --build  
 ```
 
-
-Run 0.6.x of the application
-
+Check the status of the containers and the images
 ```
-$ docker run --name apache2 -d -p 80:80 howtocodewell/how-to-put-your-docker-image-on-a-diet:0.6.0
+$ docker ps -a
+$ docker images 
 ```
-
-Check the IP address of the Docker machine
-
+Each web server can be accessed on a browser via their port number.  You can find this by running `$ docker ps`
+EG:
 ```
 $ docker-machine ip how-to-put-your-docker-image-on-a-diet
-192.168.99.100
+192.168.99.114
 ```
-
-Enter the IP address into the browser. The application should be running
-
-## Uninstall
-
-The easiest way to remove everything is to remove the Docker machine
-
+```
+$ open http://192.168.99.114:8100 # Version 1.0.0
+$ open http://192.168.99.114:8110 # Version 1.1.0
+$ open http://192.168.99.114:8120 # Version 1.2.0
+$ open http://192.168.99.114:8130 # Version 1.3.0
+$ open http://192.168.99.114:8140 # Version 1.4.0
+$ open http://192.168.99.114:8150 # Version 1.5.0
+$ open http://192.168.99.114:8160 # Version 1.6.0
+$ open http://192.168.99.114:8171 # Version 1.7.0
+$ open http://192.168.99.114:8181 # Version 1.8.0 (Development target)
+$ open http://192.168.99.114:8182 # Version 1.8.0 (Staging target)
+$ open http://192.168.99.114:8190 # Version 1.9.0
+```
+# Uninstall
 ```
 $ docker-machine rm how-to-put-your-docker-image-on-a-diet
-```
-
-Or remove just the container
-
-```
-$ docker rm -f apache2
-```
-
-
-Or remove the image
-
-```
-$ docker rmi -f howtocodewell/how-to-put-your-docker-image-on-a-diet:0.6.0
 ```

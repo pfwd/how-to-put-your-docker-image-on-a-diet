@@ -1,0 +1,29 @@
+# Tag 1.8.0 Files size:   424MB (At time of creating talk)
+# Adding a staging stage
+FROM php:7.4-rc-apache as builder-base
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public/
+ADD config/sites-available/000-default.conf \
+    /etc/apache2/sites-available/000-default.conf
+
+FROM composer:1.7 as staging-vendor
+COPY site/composer.json composer.json
+RUN composer install  -o                \
+    --ignore-platform-reqs              \
+    --no-interaction                    \
+    --prefer-dist                       \
+    --no-dev                         && \
+    composer clearcache
+
+FROM builder-base as staging
+COPY --from=staging-vendor /app/ /var/www/html/
+
+FROM composer:1.7 as dev-vendor
+COPY site/composer.json composer.json
+RUN composer install                    \
+    --ignore-platform-reqs              \
+    --no-interaction                    \
+    --prefer-dist                    && \
+    composer clearcache
+
+FROM builder-base as development
+COPY --from=dev-vendor /app/ /var/www/html/

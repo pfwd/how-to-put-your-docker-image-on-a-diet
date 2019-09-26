@@ -1,0 +1,32 @@
+# Tag 1.2.0 Files size:   708MB (At time of creating talk)
+# Removed the things that we don't need
+FROM ubuntu:latest
+ARG DEBIAN_FRONTEND=noninteractive
+ENV APACHE_DOCUMENT_ROOT /var/www/html/public/
+
+RUN apt-get update -y                                   && \
+    apt-get install -y software-properties-common       && \
+    add-apt-repository -y ppa:ondrej/php                && \
+    apt install -y                                         \
+        php7.4                                             \
+        php7.4-*                                           \
+        git                                                \
+        zip                                                \
+        unzip                                              \
+        curl                                               \
+        apache2                                            \
+        libapache2-mod-php                              && \
+        curl -s https://getcomposer.org/installer | php && \
+        mv composer.phar /usr/local/bin/composer        && \
+        a2enmod rewrite
+
+ADD config/sites-available/000-default.conf \
+    /etc/apache2/sites-available/000-default.conf
+
+WORKDIR /var/www/html/
+COPY site .
+
+RUN composer install
+
+EXPOSE 80
+CMD apachectl -D FOREGROUND
